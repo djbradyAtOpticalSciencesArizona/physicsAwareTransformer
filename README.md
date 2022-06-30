@@ -1,6 +1,12 @@
 # physicsAwareTransformer
 Official respository for *Array Camera Image Fusion using Physics-Aware Transformers*.
 
+## TODOs
+* change name of the model in model.py
+* upload dataset or workflow to generate dataset (blender -> Blender2K -> blender_train)
+* HPC requirements.txt
+* document the repository and add comments
+
 ## Train
 
 ```bash
