@@ -2,7 +2,6 @@ import torch
 import torch.nn as nn
 import numpy as np
 import matplotlib.pyplot as plt
-from skimage import morphology
 
 class PASSRnet(nn.Module):
     def __init__(self, upscale_factor, in_channel=3, out_channel=3, num_input=2):
