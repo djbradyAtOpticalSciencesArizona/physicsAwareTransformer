@@ -18,7 +18,7 @@ def parse_args():
     return parser.parse_args()
 
 def test(test_loader, cfg):
-    net = PASSRnet(1).to(cfg.device)
+    net = PASSRnet(1, in_channel=1, num_input=4).to(cfg.device)
     net = nn.DataParallel(net)
     net.eval()
     cudnn.benchmark = True
@@ -54,7 +54,7 @@ def test(test_loader, cfg):
         
 
 def main(cfg):
-    test_set = TestSetLoader(dataset_dir=cfg.testset_dir + '/' + cfg.dataset, scale_factor=cfg.scale_factor)
+    test_set = TestSetMultiLoader(dataset_dir=cfg.testset_dir + '/' + cfg.dataset, scale_factor=cfg.scale_factor)
     test_loader = DataLoader(dataset=test_set, num_workers=1, batch_size=1, shuffle=False)
     result = test(test_loader, cfg)
     return result
