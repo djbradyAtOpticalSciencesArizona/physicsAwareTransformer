@@ -3,7 +3,7 @@ import random
 from math import radians
 import math
 import sys
-sys.path.append("/home/qian/Documents/TrainingDataSynthesis")
+sys.path.append("/home/qian/Downloads/physicsAwareTransformer/trainingDataSynthesis")
 from utils import *
 
 mesh_obj_list = ["plane", "cube", "uv_sphere", "cylinder", "cone", "torus"]
@@ -82,41 +82,45 @@ if __name__ == '__main__':
 #                n_samples = 1024, render_region = True, 
 #                render_params = (4096 * 2 - 128, 4096 * 2 + 128, 
 #                               4096 * 2 - 128, 4096 * 2 + 128))
-    init_scene_eevee((2048, 1536), 60)
+    init_scene_eevee((2048, 1536), 60, True, True)
     
-    n_scenes = 900
+    n_scenes = 1
+    
+    wavelengths = ['white']
     
     for scene_idx in range(n_scenes):
-        ''' clear scene '''
-        clear_scene()
+        for w in wavelengths:
+            ''' clear scene '''
+            clear_scene()
 
-        ''' add light source '''
-        add_light((-3, 0, 7), light_type = 'AREA')
+            ''' add light source '''
+            light_obj = add_light((-3, 0, 7), energy=10000, light_type = 'AREA', light_color=wavelength_to_rgb(w))
 
-        ''' set camera '''
-        add_camera(loc = (7.35889, -6.92579, 4.95831), lens=64) #, 256
-        
-        ''' add background cube '''
-        background = gen_random_obj_with_texture("cube")
-        background.dimensions = (20, 20, 20)
-        background.name = "background"
-        
-        ''' add objs '''
-        n_obj = random.randint(10, 20)
-        obj_list = [background]
-        for i in range(n_obj):
-            obj_list.append(gen_random_obj_with_texture())
+            ''' set camera '''
+            #add_camera(loc = (7.35889, -6.92579, 4.95831), lens=64) #, 256
+            add_array_cameras(locs = [(0, 0, 0),(7, -7, 5),(7.5, -6.5, 5)], 
+                                        fs=[64]*3) #, 256
+            
+            ''' add background cube '''
+            background = gen_random_obj_with_texture("cube")
+            background.dimensions = (20, 20, 20)
+            background.name = "background"
+            
+            ''' add objs '''
+            n_obj = random.randint(10, 20)
+            obj_list = [background]
+            for i in range(n_obj):
+                obj_list.append(gen_random_obj_with_texture())
 
-        gen_random_animation(obj_list, 26)
-        bpy.context.scene.frame_current = 5
+            gen_random_animation(obj_list, 26)
+            bpy.context.scene.frame_current = 5
 
-#        ''' output '''
-        path = '/home/qian/Downloads/blender_2k_test/scene{:04d}/'.format(scene_idx)
-        link_file_node(path + 'Image', 'Image', 'PNG', '8')
-#        link_file_node(path + 'Depth', 'Depth')
-#        link_file_node(path + 'Vector', 'Vector')
-        bpy.context.scene.frame_end = 5#30
-        bpy.ops.render.render(animation = False)
-##        bpy.context.scene.frame_end = 240
-        clear_output_nodes()
-    
+    #        ''' output '''
+            path = '/home/qian/Desktop/test/scene{:04d}/'.format(scene_idx)
+            bpy.context.scene.frame_end = 5#30
+            link_file_node(path + f'Image_{w}', 'Image', 'PNG', '8', 'BW')
+#            link_file_node(path + f'Depth_{w}', 'Depth')
+#            link_file_node(path + 'Vector', 'Vector')
+            bpy.ops.render.render(animation = False)
+#            bpy.context.scene.frame_end = 240
+            clear_output_nodes()

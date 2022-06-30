@@ -325,7 +325,7 @@ def link_file_node(base_path, output_type,
     nodes = scene.node_tree.nodes
     render_layers = nodes['Render Layers']
     ## assure render layer node has property vector                           
-    scene.view_layers["View Layer"].use_pass_vector = True
+    scene.view_layers["ViewLayer"].use_pass_vector = True
 
     file_node = nodes.new("CompositorNodeOutputFile")
     file_node.base_path = base_path
