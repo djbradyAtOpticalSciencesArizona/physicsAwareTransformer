@@ -23,7 +23,7 @@ def trainer(cfg):
         
     writer = SummaryWriter(logs_dir)
     
-    net = PASSRnet(1, in_channel=3, num_input=2).to(cfg.device)
+    net = PAT(1, in_channel=3, num_input=2).to(cfg.device)
     net = nn.DataParallel(net)
     net.apply(weights_init_xavier)
     cudnn.benchmark = True

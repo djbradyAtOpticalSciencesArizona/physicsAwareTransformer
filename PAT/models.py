@@ -3,9 +3,9 @@ import torch.nn as nn
 import numpy as np
 import matplotlib.pyplot as plt
 
-class PASSRnet(nn.Module):
+class PAT(nn.Module):
     def __init__(self, upscale_factor, in_channel=3, out_channel=3, num_input=2):
-        super(PASSRnet, self).__init__()
+        super(PAT, self).__init__()
         ### feature extraction
         self.init_feature = nn.Sequential(
             nn.Conv2d(in_channel, 64, 3, 1, 1, bias=False),

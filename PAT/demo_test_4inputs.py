@@ -18,7 +18,7 @@ def parse_args():
     return parser.parse_args()
 
 def test(test_loader, cfg):
-    net = PASSRnet(1, in_channel=1, num_input=4).to(cfg.device)
+    net = PAT(1, in_channel=1, num_input=4).to(cfg.device)
     net = nn.DataParallel(net)
     net.eval()
     cudnn.benchmark = True
