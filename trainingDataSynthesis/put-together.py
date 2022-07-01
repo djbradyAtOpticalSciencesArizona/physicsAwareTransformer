@@ -3,7 +3,7 @@ import random
 from math import radians
 import math
 import sys
-sys.path.append("/home/qian/Downloads/physicsAwareTransformer/trainingDataSynthesis")
+sys.path.append("/home/qian/Documents/physicsAwareTransformer/trainingDataSynthesis")
 from utils import *
 
 mesh_obj_list = ["plane", "cube", "uv_sphere", "cylinder", "cone", "torus"]
@@ -84,7 +84,7 @@ if __name__ == '__main__':
 #                               4096 * 2 - 128, 4096 * 2 + 128))
     init_scene_eevee((2048, 1536), 60, True, True)
     
-    n_scenes = 1
+    n_scenes = 6
     
     wavelengths = ['white']
     
@@ -115,10 +115,10 @@ if __name__ == '__main__':
             gen_random_animation(obj_list, 26)
             bpy.context.scene.frame_current = 5
 
-    #        ''' output '''
+#        ''' output '''
             path = '/home/qian/Desktop/test/scene{:04d}/'.format(scene_idx)
             bpy.context.scene.frame_end = 5#30
-            link_file_node(path + f'Image_{w}', 'Image', 'PNG', '8', 'BW')
+            link_file_node(path + f'Image_{w}', 'Image', 'PNG', '8')
 #            link_file_node(path + f'Depth_{w}', 'Depth')
 #            link_file_node(path + 'Vector', 'Vector')
             bpy.ops.render.render(animation = False)
