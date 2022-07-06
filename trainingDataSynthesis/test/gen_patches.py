@@ -66,11 +66,8 @@ for i in range(len(lr0_list)):
             cv2.imwrite(path+'/lr0.png', lr_patch_0)
             cv2.imwrite(path+'/lr1.png', lr_patch_1)
 
-#            lam = calc_lam((x_l, x_r, y_l, y_r))
-#            xxs, yys = calc_pos_mat((x_l, x_r, y_l, y_r), lam)
+            lam = calc_lam((x_l, x_r, y_l, y_r))
+            xxs, yys = calc_pos_mat((x_l, x_r, y_l, y_r), lam)
 
-#            np.save('../blender_patches_corrected/patches_x{}/xxs_{:03d}.npy'.format(scale,j*7+k+1),xxs.astype(np.int16))
-#            np.save('../blender_patches_corrected/patches_x{}/yys_{:03d}.npy'.format(scale,j*7+k+1),yys.astype(np.int16))
-            #break
-        #break
-#    break
+            np.save('../blender_patches_corrected/patches_x{}/xxs_{:03d}.npy'.format(scale,j*7+k+1),xxs.astype(np.int16))
+            np.save('../blender_patches_corrected/patches_x{}/yys_{:03d}.npy'.format(scale,j*7+k+1),yys.astype(np.int16))
