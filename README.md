@@ -2,13 +2,16 @@
 Official respository for [Array Camera Image Fusion using Physics-Aware Transformers](https://arxiv.org/abs/2207.02250), arXiv:2207.02250.
 
 ## TODOs
-* upload dataset -> waiting for UA reData approval
-* document the repository and add comments
+* document the repository in details and add comments
 
 ## Data synthesis
-Tested on Blender 2.92.0. Load *put-together.py*, change paths to the local machine. and run the script to generate the dataset. Run *trainingDataSynthesis/test/gen_train.py* to generate training patches.
+Method 1: Tested on Blender 2.92.0. Load *put-together.py*, change paths to the local machine. and run the script to generate the dataset.
 
-## PAT requirements
+Method 2: Download our dataset [here](https://doi.org/10.25422/azu.data.20217140)(powered by UA ReDATA)
+
+Then run *trainingDataSynthesis/test/gen_train.py* to generate training patches.
+
+## PAT pip requirements
 under *PAT/requirements.txt*. The enviorment is exported from *pytorch/nvidia/20.01* docker on PUMA nodes of UA HPC.
 
 ## Train
