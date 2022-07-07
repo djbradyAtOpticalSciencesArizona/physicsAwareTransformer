@@ -1,5 +1,5 @@
 # physicsAwareTransformer
-Official respository for *Array Camera Image Fusion using Physics-Aware Transformers*.
+Official respository for [Array Camera Image Fusion using Physics-Aware Transformers](https://arxiv.org/abs/2207.02250), arXiv:2207.02250.
 
 ## TODOs
 * upload dataset -> waiting for UA reData approval
