@@ -5,11 +5,11 @@ Official respository for [Array Camera Image Fusion using Physics-Aware Transfor
 * document the repository in details and add comments
 
 ## Data synthesis
-Method 1: Tested on Blender 2.92.0. Load *put-together.py*, change paths to the local machine. and run the script to generate the dataset.
+Method 1: Open *put-together.py* in Blender 2.92.0, change paths to the local machine, and run the script to generate the dataset.
 
-Method 2: Download our dataset [here](https://doi.org/10.25422/azu.data.20217140)(powered by UA ReDATA)
+Method 2: Download our dataset [here](https://doi.org/10.25422/azu.data.20217140) (powered by UA ReDATA)
 
-Then run *trainingDataSynthesis/test/gen_train.py* to generate training patches.
+Then run *trainingDataSynthesis/test/gen_patches.py* to generate patches.
 
 ## PAT pip requirements
 under *PAT/requirements.txt*. The enviorment is exported from *pytorch/nvidia/20.01* docker on PUMA nodes of UA HPC.
@@ -17,11 +17,11 @@ under *PAT/requirements.txt*. The enviorment is exported from *pytorch/nvidia/20
 ## Train
 
 ```bash
-pytorch train.py
+pytorch train.py --trainset_dir [path to your training patches] --validset_dir [path to your validation patches]
 ```
 OR
 ```bash
-pytorch train_4inputs.py
+pytorch train_4inputs.py --trainset_dir [path to your training patches] --validset_dir [path to your validation patches]
 ```
 
 ## Test
