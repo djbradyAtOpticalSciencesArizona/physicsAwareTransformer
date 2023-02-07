@@ -1,8 +1,8 @@
 # physicsAwareTransformer
 Official respository for [Array Camera Image Fusion using Physics-Aware Transformers](https://arxiv.org/abs/2207.02250), arXiv:2207.02250.
 
-## TODOs
-* document the repository in details and add comments
+## Update -- Feb 6, 2023
+An example to play the pretrained PAT with the local receptive field (similar to the receptive field of CNNs) is uploaded to [PAT/Inference_pat_local_receptive_field.ipynb](PAT/Inference_pat_local_receptive_field.ipynb).
 
 ## Data synthesis
 Method 1: Open *put-together.py* in Blender 2.92.0, change paths to the local machine, and run the script to generate the dataset.
